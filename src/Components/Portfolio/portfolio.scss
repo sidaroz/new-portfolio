@@ -1,0 +1,112 @@
+.portfolio__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.portfolio__item {
+  background: var(--color-bg-variant);
+  max-height: 105%;
+  padding: 1.2rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.portfolio__item:hover {
+  border-color: var(--color-primary-variant);
+  background: transparent;
+
+  .project__technologies {
+    display: block;
+  }
+}
+
+.portfolio__item-image {
+  position: relative;
+  max-height: 200px;
+  min-height: 200px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    background: linear-gradient(
+      90.21deg,
+      var(--color-primary) -5.91%,
+      #1b1b1bdc 114.84%
+    );
+    opacity: 0.85;
+    position: absolute;
+    width: 100%;
+    height: 0;
+    transition: 0.4s ease-in-out;
+  }
+  &:hover::before {
+    height: 100%;
+  }
+}
+
+.portfolio__item h3 {
+  margin: 1.2rem 0 2rem;
+}
+
+.portfolio__item-cta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.project__technologies {
+  font-size: 9px;
+  position: absolute;
+  text-align: center;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  width: 100%;
+}
+
+.portfolio__item-image:hover .project__technologies {
+  top: 50%;
+  opacity: 1;
+}
+div.project__technologies > .technologies__header {
+  text-align: center;
+  font-size: 10px;
+  color: var(--color-white);
+  transform: translateY(0%);
+}
+
+/* --------------- Media Queries (medium devices) ---------------- */
+@media screen and (max-width: 1024px) {
+  .portfolio__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  .portfolio__item-cta {
+    align-content: space-between;
+    display: block;
+    text-align: center;
+  }
+  .btn-primary {
+    margin-left: 1rem;
+  }
+}
+
+/* --------------- Media Queries (small devices) ---------------- */
+@media screen and (max-width: 600px) {
+  .portfolio__container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .portfolio__item-cta {
+    align-content: space-between;
+    display: block;
+    text-align: center;
+  }
+  .btn-primary {
+    margin-left: 1rem;
+  }
+}

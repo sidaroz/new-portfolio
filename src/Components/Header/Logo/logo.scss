@@ -1,0 +1,36 @@
+.logo__container {
+  position: relative;
+  z-index: 0;
+  width: 26%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  opacity: 0;
+
+  svg {
+    width: 100%;
+    height: auto;
+    transform: rotateZ(30deg) !important;
+  }
+
+  .solid__logo {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: rotateZ(30deg);
+    z-index: 1;
+  }
+}
+
+.svg__container {
+  stroke: var(--color-primary);
+  stroke-width: 10;
+}
+
+/* --------------- Media Queries (medium devices) ---------------- */
+@media screen and (max-width: 1500px) {
+  .logo__container {
+    width: 250px;
+  }
+}
+
+/* --------------- Media Queries (small devices) ---------------- */
