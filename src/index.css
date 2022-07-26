@@ -114,6 +114,22 @@ img {
   object-fit: cover;
 }
 
+/* --------------- Media Queries (large devices) ---------------- */
+@media screen and (min-width: 1900px) {
+  .large__container {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+/* --------------- Media Queries (very - large devices) ---------------- */
+@media screen and (min-width: 2500px) {
+  .large__container {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
 /* --------------- Media Queries (medium devices) ---------------- */
 @media screen and (max-width: 1024px) {
   .container {

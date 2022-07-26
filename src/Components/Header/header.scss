@@ -139,7 +139,12 @@ h1::after {
 //     }
 //   }
 // }
-
+/* --------------- Media Queries (very - large devices) ---------------- */
+@media screen and (min-width: 2500px) {
+  header {
+    height: 85vh;
+  }
+}
 /* --------------- Media Queries (medium devices) ---------------- */
 @media screen and (max-width: 1024px) {
   header {

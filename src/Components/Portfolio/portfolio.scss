@@ -1,3 +1,7 @@
+.portfolio__header {
+  margin-bottom: 1.25rem;
+}
+
 .portfolio__container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -77,6 +81,12 @@ div.project__technologies > .technologies__header {
   font-size: 10px;
   color: var(--color-white);
   transform: translateY(0%);
+}
+
+.portfolio__disclaimer {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.25rem;
 }
 
 /* --------------- Media Queries (medium devices) ---------------- */

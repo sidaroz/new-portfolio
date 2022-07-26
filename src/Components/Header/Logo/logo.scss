@@ -25,7 +25,18 @@
   stroke: var(--color-primary);
   stroke-width: 10;
 }
-
+/* --------------- Media Queries (large devices) ---------------- */
+@media screen and (min-width: 1900px) {
+  .logo__container {
+    width: 35%;
+  }
+}
+/* --------------- Media Queries (very - large devices) ---------------- */
+@media screen and (min-width: 2500px) {
+  .logo__container {
+    width: 40%;
+  }
+}
 /* --------------- Media Queries (medium devices) ---------------- */
 @media screen and (max-width: 1500px) {
   .logo__container {

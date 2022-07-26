@@ -125,7 +125,11 @@ function Portfolio({ innerRef }) {
   return (
     <section id="portfolio" ref={innerRef}>
       <h5>My Recent Work</h5>
-      <h2>.portfolio()</h2>
+      <h2 className="portfolio__header">.portfolio()</h2>
+      <small className="text-light portfolio__disclaimer">
+        Disclaimer: Apps are hosted on free Heroku server. Please allow 10-15s
+        to spin up.
+      </small>
       <div className="container portfolio__container">
         {data.map(({ id, image, title, github, demo, technologies }) => {
           return (

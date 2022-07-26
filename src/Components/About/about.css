@@ -85,7 +85,12 @@ section#about {
   overflow: hidden;
   padding: 5rem 1.5rem 1.5rem 1.5rem;
 }
-
+/* --------------- Media Queries (large devices) ---------------- */
+@media screen and (min-width: 1500px) and (max-width: 3200px) {
+  .me__about {
+    margin-top: 0;
+  }
+}
 /* --------------- Media Queries (medium devices) ---------------- */
 @media screen and (max-width: 1024px) {
   .about__container {
