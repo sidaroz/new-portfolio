@@ -47,12 +47,12 @@ function App() {
   return (
     <>
       <div className="large__container">
-      <Header innerRef={ref} />
-      <Nav activeSection={activeSection} />
-      <About innerRef={ref2} />
-      <Experience innerRef={ref3} />
-      <Portfolio innerRef={ref4} />
-      <Contact innerRef={ref5} />
+        <Header innerRef={ref} />
+        <Nav activeSection={activeSection} />
+        <About innerRef={ref2} />
+        <Experience innerRef={ref3} />
+        <Portfolio innerRef={ref4} />
+        <Contact innerRef={ref5} />
       </div>
       <Footer />
     </>

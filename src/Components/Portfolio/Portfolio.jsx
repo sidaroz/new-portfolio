@@ -26,8 +26,22 @@ import {
   SiFirebase,
   SiSass,
 } from "react-icons/si";
+import { ToastContainer, toast } from "react-toastify";
 
 function Portfolio({ innerRef }) {
+  const onCurrentWebsite = () =>
+    toast.dark("🐢 Well thats awkward...", {
+      className: "toast__styling",
+      progressClassName: "toast__progress-bar",
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   const data = [
     {
       id: 1,
@@ -111,8 +125,8 @@ function Portfolio({ innerRef }) {
       id: 5,
       image: PortfolioImg,
       title: "Sidar's Page - My Portfolio Website",
-      github: "https://github.com/sidaroz/journaling-project",
-      demo: "https://sidaroz.netlify.app/",
+      github: "https://github.com/sidaroz/new-portfolio",
+      demo: onCurrentWebsite,
       technologies: [
         { techTitle: "React", icon: <SiReact /> },
         { techTitle: "CSS", icon: <SiCss3 /> },
@@ -162,6 +176,7 @@ function Portfolio({ innerRef }) {
                   className="btn btn-primary"
                   target="_blank"
                   rel="noreferrer"
+                  onClick={typeof demo === "string" ? null : onCurrentWebsite}
                 >
                   Live Website
                 </a>
@@ -170,6 +185,17 @@ function Portfolio({ innerRef }) {
           );
         })}
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </section>
   );
 }
