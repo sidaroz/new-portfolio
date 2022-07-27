@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./about.css";
 import ME2 from "../../assets/sidar-image.png";
 import { FaAward } from "react-icons/fa";
 import { TbArrowFork } from "react-icons/tb";
 import { VscFolderLibrary } from "react-icons/vsc";
+import gsap from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function About({ innerRef }) {
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.from("#about", {
+      duration: 1,
+      y: "100",
+      opacity: 0,
+      ease: "ease-in",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top 85%",
+        end: "bottom 20%",
+        toggleActions: "restart complete complete reset",
+      },
+    });
+  }, []);
   return (
     <section id="about" ref={innerRef}>
       <h5>Get To Know Me</h5>

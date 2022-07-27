@@ -10,9 +10,8 @@ function Logo() {
   const solidLogoRef = useRef();
   const tl = useRef(gsap.timeline());
 
+  gsap.registerPlugin(DrawSVGPlugin);
   useEffect(() => {
-    gsap.registerPlugin(DrawSVGPlugin);
-
     tl.current
       .to(bgRef.current, {
         duration: 1,

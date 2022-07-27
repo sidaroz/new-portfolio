@@ -1,13 +1,30 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import "./contact.css";
 import { MdOutlineEmail } from "react-icons/md";
 import emailjs from "emailjs-com";
 import lottie from "lottie-web";
 import EmailDone from "../../assets/email-completed.json";
-import gsap from "gsap";
+import gsap, { Power3 } from "gsap";
 import { Circ } from "gsap/gsap-core";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Contact({ innerRef }) {
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.from("#contact", {
+      duration: 1,
+      y: "100",
+      opacity: 0,
+      ease: "ease-in",
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 90%",
+        end: "bottom 20%",
+        toggleActions: "restart complete complete reset",
+        markers: true,
+      },
+    });
+  }, []);
   const form = useRef();
   const t1 = new gsap.timeline({ defaults: { ease: Circ.easeOut } });
   const animationContainer = document.querySelector(".email__lottie");
@@ -16,16 +33,25 @@ function Contact({ innerRef }) {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // emailjs.sendForm(
-    //   "service_z9wwotg",
-    //   "template_1j7xwkh",
-    //   form.current,
-    //   "s9gKCVJ2nBCcqbqlp"
-    // );
+    emailjs.sendForm(
+      "service_z9wwotg",
+      "template_1j7xwkh",
+      form.current,
+      "s9gKCVJ2nBCcqbqlp"
+    );
 
     t1.play();
-    t1.to(".email__form", { y: 40, opacity: 0, stagger: 0.05 });
-    t1.to(".contact__option", { y: 40, opacity: 0 }, "-=.8");
+    t1.to(".email__form", {
+      y: 40,
+      opacity: 0,
+      stagger: 0.05,
+      ease: Power3.easeOut,
+    });
+    t1.to(
+      ".contact__option",
+      { y: 40, opacity: 0, ease: Power3.easeOut },
+      "-=.8"
+    );
     setTimeout(() => {
       animationContainer.classList.remove("hidden");
       lottie.loadAnimation({
@@ -39,8 +65,8 @@ function Contact({ innerRef }) {
       animationContainer.classList.add("hidden");
       lottie.destroy();
     }, 4000);
-    t1.to(".email__form", { y: -40, opacity: 1 }, "+=3");
-    t1.to(".contact__option", { y: -40, opacity: 1 }, "-=.3");
+    t1.fromTo(".email__form", { y: 40 }, { y: 0, opacity: 1 }, "+=3");
+    t1.fromTo(".contact__option", { y: 40 }, { y: 0, opacity: 1 }, "-=.3");
     e.target.reset();
   };
   t1.paused(true);

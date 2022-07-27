@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./portfolio.scss";
 import Factopia from "../../assets/factopia.png";
 import Players from "../../assets/players.png";
@@ -25,10 +25,29 @@ import {
   SiSqlite,
   SiFirebase,
   SiSass,
+  SiGreensock,
 } from "react-icons/si";
 import { ToastContainer, toast } from "react-toastify";
+import gsap from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Portfolio({ innerRef }) {
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.from("#portfolio", {
+      duration: 1,
+      y: "100",
+      opacity: 0,
+      ease: "ease-in",
+      scrollTrigger: {
+        trigger: "#portfolio",
+        start: "top 85%",
+        end: "bottom 20%",
+        toggleActions: "restart complete complete reset",
+      },
+    });
+  }, []);
+
   const onCurrentWebsite = () =>
     toast.dark("🐢 Well thats awkward...", {
       className: "toast__styling",
@@ -131,6 +150,7 @@ function Portfolio({ innerRef }) {
         { techTitle: "React", icon: <SiReact /> },
         { techTitle: "CSS", icon: <SiCss3 /> },
         { techTitle: "Sass", icon: <SiSass /> },
+        { techTitle: "GreenSock", icon: <SiGreensock /> },
         { techTitle: "Netlify", icon: <SiNetlify /> },
       ],
     },

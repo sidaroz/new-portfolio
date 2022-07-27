@@ -8,6 +8,8 @@ import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function App() {
   const [activeSection, setActiveSection] = useState("#");
@@ -44,11 +46,12 @@ function App() {
       setActiveSection("contact");
     }
   }, [inView, inView2, inView3, inView4, inView5]);
+
   return (
     <>
       <div className="large__container">
         <Header innerRef={ref} />
-        <Nav activeSection={activeSection} />
+        <Nav activeSection={activeSection} className="nav__bar" />
         <About innerRef={ref2} />
         <Experience innerRef={ref3} />
         <Portfolio innerRef={ref4} />

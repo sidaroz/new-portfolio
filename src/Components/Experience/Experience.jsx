@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./experience.css";
 import {
   SiHtml5,
@@ -14,8 +14,25 @@ import {
   SiDjango,
   SiFlask,
 } from "react-icons/si";
+import gsap from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Experience({ innerRef }) {
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.from("#experience", {
+      duration: 1,
+      y: "100",
+      opacity: 0,
+      ease: "ease-in",
+      scrollTrigger: {
+        trigger: "#experience",
+        start: "top 90%",
+        end: "bottom 20%",
+        toggleActions: "restart complete complete reset",
+      },
+    });
+  }, []);
   return (
     <section id="experience" ref={innerRef}>
       <h5>What Skills I Have</h5>
