@@ -16,12 +16,12 @@ function Contact({ innerRef }) {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm(
-      "service_z9wwotg",
-      "template_1j7xwkh",
-      form.current,
-      "s9gKCVJ2nBCcqbqlp"
-    );
+    // emailjs.sendForm(
+    //   "service_z9wwotg",
+    //   "template_1j7xwkh",
+    //   form.current,
+    //   "s9gKCVJ2nBCcqbqlp"
+    // );
 
     t1.play();
     t1.to(".email__form", { y: 40, opacity: 0, stagger: 0.05 });

@@ -50,11 +50,10 @@
 }
 
 .email__lottie {
-  width: 300px;
-  height: 300px;
-  left: 30%;
+  width: 200px;
+  height: 200px;
+  left: 36%;
   position: absolute;
-  margin: 0 auto;
 }
 
 /* ---------------------- FORM ------------------------ */
@@ -75,11 +74,35 @@ textarea {
   color: var(--color-white);
 }
 
+/* --------------- Media Queries (large devices) ---------------- */
+@media screen and (min-width: 1600px) {
+  .email__lottie {
+    left: 39%;
+  }
+}
+/* --------------- Media Queries (large devices) ---------------- */
+@media screen and (min-width: 1900px) {
+  .email__lottie {
+    left: 37%;
+  }
+}
+
+/* --------------- Media Queries (very - large devices) ---------------- */
+@media screen and (min-width: 2500px) {
+  .email__lottie {
+    left: 38%;
+  }
+}
 /* --------------- Media Queries (medium devices) ---------------- */
 @media screen and (max-width: 1024px) {
   .container.contact__container {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  .email__lottie {
+    width: 200px;
+    left: 29%;
+    top: 10%;
   }
 }
 
@@ -92,5 +115,10 @@ textarea {
 
   .contact__h2 {
     margin-bottom: 0;
+  }
+  .email__lottie {
+    width: 200px;
+    left: 22%;
+    top: 10%;
   }
 }
