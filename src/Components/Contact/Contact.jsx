@@ -21,7 +21,6 @@ function Contact({ innerRef }) {
         start: "top 90%",
         end: "bottom 20%",
         toggleActions: "restart complete complete reset",
-        markers: true,
       },
     });
   }, []);

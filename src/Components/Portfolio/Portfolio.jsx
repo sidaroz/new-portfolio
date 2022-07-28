@@ -33,12 +33,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Portfolio({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
+
   useEffect(() => {
-    gsap.from("#portfolio", {
-      duration: 1,
+    gsap.from(".portfolio__container", {
       y: "100",
-      opacity: 0,
-      ease: "ease-in",
+      opacity: 1,
+      scrollTrigger: {
+        trigger: "#portfolio",
+        start: "top 85%",
+        end: "bottom 20%",
+        toggleActions: "restart complete complete reset",
+      },
+    });
+
+    gsap.from(".portfolio__info", {
+      y: "100",
+      opacity: 1,
       scrollTrigger: {
         trigger: "#portfolio",
         start: "top 85%",
@@ -48,7 +58,7 @@ function Portfolio({ innerRef }) {
     });
   }, []);
 
-  const onCurrentWebsite = () =>
+  const onCurrentWebsite = () => {
     toast.dark("🐢 Well thats awkward...", {
       className: "toast__styling",
       progressClassName: "toast__progress-bar",
@@ -60,6 +70,7 @@ function Portfolio({ innerRef }) {
       draggable: true,
       progress: undefined,
     });
+  };
 
   const data = [
     {
@@ -158,12 +169,14 @@ function Portfolio({ innerRef }) {
 
   return (
     <section id="portfolio" ref={innerRef}>
-      <h5>My Recent Work</h5>
-      <h2 className="portfolio__header">.portfolio()</h2>
-      <small className="text-light portfolio__disclaimer">
-        Disclaimer: Apps are hosted on free Heroku server. Please allow 10-15s
-        to spin up.
-      </small>
+      <section className="portfolio__info">
+        <h5>My Recent Work</h5>
+        <h2 className="portfolio__header">.portfolio()</h2>
+        <small className="text-light portfolio__disclaimer">
+          Disclaimer: Apps are hosted on free Heroku server. Please allow 10-15s
+          to spin up.
+        </small>
+      </section>
       <div className="container portfolio__container">
         {data.map(({ id, image, title, github, demo, technologies }) => {
           return (
@@ -196,7 +209,11 @@ function Portfolio({ innerRef }) {
                   className="btn btn-primary"
                   target="_blank"
                   rel="noreferrer"
-                  onClick={typeof demo === "string" ? null : onCurrentWebsite}
+                  onClick={
+                    window.innerWidth > 1200 && typeof demo === "string"
+                      ? null
+                      : onCurrentWebsite
+                  }
                 >
                   Live Website
                 </a>

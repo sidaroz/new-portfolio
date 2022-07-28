@@ -9,6 +9,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function About({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
+  // ScrollTrigger.batch("#about", {
+  //   start: "top 80%",
+  //   onEnter: () => {
+  //     gsap.from("p", {
+  //       duration: 1,
+  //       opacity: 0,
+  //       ease: "ease-in",
+  //       y: "0",
+  //       stagger: 0.2,
+  //     });
+  //   },
+  // });
+
   useEffect(() => {
     gsap.from("#about", {
       duration: 1,
@@ -18,6 +31,18 @@ function About({ innerRef }) {
       scrollTrigger: {
         trigger: "#about",
         start: "top 85%",
+        end: "bottom 20%",
+        toggleActions: "restart complete complete reset",
+      },
+    });
+    gsap.from("p", {
+      duration: 1,
+      y: "100",
+      opacity: 0,
+      ease: "ease-in",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top 30%",
         end: "bottom 20%",
         toggleActions: "restart complete complete reset",
       },
