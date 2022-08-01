@@ -1,9 +1,42 @@
+:root {
+  --transitionDelay: 0.4s;
+}
 .container.contact__container {
   position: relative;
   width: 58%;
   display: grid;
   grid-template-columns: 30% 58%;
   gap: 12%;
+}
+
+.contact__title--container {
+  min-height: 5rem;
+  max-height: 5rem;
+  overflow: hidden;
+  text-align: center;
+  color: var(--color-primary);
+  .contact__title {
+    transition: var(--transition);
+    transition-delay: var(--transitionDelay);
+    display: block;
+  }
+  .contact__title-down {
+    display: block;
+    transform: translateY(100%);
+    transition: var(--transition);
+    transition-delay: var(--transitionDelay);
+    color: var(--color-primary);
+  }
+  .is--focused.contact__title {
+    transform: translateY(0%);
+  }
+
+  .is--typing.contact__title-down {
+    transform: translateY(-30px);
+  }
+  .is--typing.contact__title {
+    transform: translateY(-100%);
+  }
 }
 
 .contact__options {
@@ -73,7 +106,6 @@ textarea {
   resize: none;
   color: var(--color-white);
 }
-
 /* --------------- Media Queries (large devices) ---------------- */
 @media screen and (min-width: 1600px) {
   .email__lottie {
@@ -112,7 +144,10 @@ textarea {
     width: var(--container-width-sm);
     padding-bottom: 2.7rem;
   }
-
+  .contact__title--container {
+    min-height: 3rem;
+    max-height: 3rem;
+  }
   .contact__h2 {
     margin-bottom: 0;
   }

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import "./contact.css";
+import "./contact.scss";
 import { MdOutlineEmail } from "react-icons/md";
 import emailjs from "emailjs-com";
 import lottie from "lottie-web";
@@ -11,19 +11,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 function Contact({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    // gsap.from("#contact", {
-    //   duration: 1,
-    //   y: "100",
-    //   opacity: 0,
-    //   ease: "ease-in",
-    //   scrollTrigger: {
-    //     trigger: "#contact",
-    //     start: "top 90%",
-    //     end: "bottom 20%",
-    //     toggleActions: "restart complete complete reset",
-    //   },
-    // });
-
     gsap.set("#contact", { y: 100, opacity: 0 });
     ScrollTrigger.batch("#contact", {
       start: "top 70%",
@@ -45,6 +32,28 @@ function Contact({ innerRef }) {
         }),
     });
   }, []);
+
+  const contactHeader = document.querySelector(".contact__title");
+  const contactingHeader = document.querySelector(".contact__title-down");
+
+  const keyDownFunc = (event) => {
+    contactHeader.classList.add("is--typing");
+    contactingHeader.classList.add("is--typing");
+    if (event.which === 8 && event.target.value === "") {
+      contactHeader.classList.remove("is--typing");
+      contactingHeader.classList.remove("is--typing");
+    }
+  };
+
+  const focusFormFunc = () => {
+    contactHeader.classList.add("is--focused");
+  };
+
+  const blurFormFunc = () => {
+    contactHeader.classList.remove("is--focused", "is--typing");
+    contactingHeader.classList.remove("is--focused", "is--typing");
+  };
+
   const form = useRef();
   const t1 = new gsap.timeline({ defaults: { ease: Circ.easeOut } });
   const animationContainer = document.querySelector(".email__lottie");
@@ -94,7 +103,10 @@ function Contact({ innerRef }) {
   return (
     <section id="contact" ref={innerRef}>
       <h5>Get In Touch</h5>
-      <h2 className="contact__h2">.contact()</h2>
+      <div className="contact__title--container">
+        <h2 className="contact__h2 contact__title">.contact()</h2>
+        <h2 className="contact__h2 contact__title-down">.contacting...</h2>
+      </div>
 
       <div className="container contact__container">
         <div className="contact__options">
@@ -111,7 +123,14 @@ function Contact({ innerRef }) {
             </a>
           </article>
         </div>
-        <form ref={form} onSubmit={sendEmail} className="email__form">
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="email__form"
+          onFocus={focusFormFunc}
+          onBlur={blurFormFunc}
+          onKeyDown={keyDownFunc}
+        >
           <input
             type="text"
             name="name"
