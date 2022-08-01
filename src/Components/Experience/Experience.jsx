@@ -13,6 +13,9 @@ import {
   SiPython,
   SiDjango,
   SiFlask,
+  SiSass,
+  SiExpress,
+  SiRedux,
 } from "react-icons/si";
 import gsap from "gsap/all";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -20,17 +23,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 function Experience({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    gsap.from("#experience", {
-      duration: 1,
-      y: "100",
-      opacity: 0,
-      ease: "ease-in",
-      scrollTrigger: {
-        trigger: "#experience",
-        start: "top 90%",
-        end: "bottom 20%",
-        toggleActions: "restart complete complete reset",
-      },
+    gsap.set("#experience", { y: 100, opacity: 0 });
+    ScrollTrigger.batch("#experience", {
+      start: "top 70%",
+      end: "bottom 20%",
+      onEnter: () =>
+        gsap.to("#experience", {
+          opacity: 1,
+          autoAlpha: 1,
+          y: 0,
+          ease: "ease-in",
+          overwrite: true,
+        }),
+      onLeaveBack: () =>
+        gsap.to("#experience", {
+          opacity: 0,
+          autoAlpha: 1,
+          y: 100,
+          overwrite: true,
+        }),
     });
   }, []);
   return (
@@ -46,42 +57,48 @@ function Experience({ innerRef }) {
               <SiHtml5 className="experience__details-icon" />
               <div>
                 <h4>HTML</h4>
-                <small className="text-light">Experienced</small>
               </div>
             </article>
             <article className="experience__details">
               <SiCss3 className="experience__details-icon" />
               <div>
                 <h4>CSS</h4>
-                <small className="text-light">Intermediate</small>
               </div>
             </article>
             <article className="experience__details">
               <SiJavascript className="experience__details-icon" />
               <div>
                 <h4>JavaScript</h4>
-                <small className="text-light">Intermediate</small>
               </div>
             </article>
             <article className="experience__details">
               <SiBootstrap className="experience__details-icon" />
               <div>
                 <h4>Bootstrap</h4>
-                <small className="text-light">Beginner</small>
               </div>
             </article>
             <article className="experience__details">
               <SiReact className="experience__details-icon" />
               <div>
                 <h4>React</h4>
-                <small className="text-light">Intermediate</small>
               </div>
             </article>
             <article className="experience__details">
               <SiDocker className="experience__details-icon" />
               <div>
                 <h4>Docker</h4>
-                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <SiRedux className="experience__details-icon" />
+              <div>
+                <h4>Redux</h4>
+              </div>
+            </article>
+            <article className="experience__details">
+              <SiSass className="experience__details-icon" />
+              <div>
+                <h4>Sass</h4>
               </div>
             </article>
           </div>
@@ -92,43 +109,43 @@ function Experience({ innerRef }) {
             <article className="experience__details">
               <SiNodedotjs className="experience__details-icon" />
               <div>
-                <h4>Node JS</h4>
-                <small className="text-light">Experienced</small>
+                <h4>Node.js</h4>
               </div>
             </article>
             <article className="experience__details">
               <SiMongodb className="experience__details-icon" />
               <div>
                 <h4>MongoDB</h4>
-                <small className="text-light">Intermediate</small>
               </div>
             </article>
             <article className="experience__details">
               <SiPostgresql className="experience__details-icon" />
               <div>
                 <h4>PostgreSQL</h4>
-                <small className="text-light">Intermediate</small>
               </div>
             </article>
             <article className="experience__details">
               <SiPython className="experience__details-icon" />
               <div>
                 <h4>Python</h4>
-                <small className="text-light">Beginner</small>
               </div>
             </article>
             <article className="experience__details">
               <SiDjango className="experience__details-icon" />
               <div>
                 <h4>Django</h4>
-                <small className="text-light">Intermediate</small>
               </div>
             </article>
             <article className="experience__details">
               <SiFlask className="experience__details-icon" />
               <div>
                 <h4>Flask</h4>
-                <small className="text-light">Beginner</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <SiExpress className="experience__details-icon" />
+              <div>
+                <h4>Express</h4>
               </div>
             </article>
           </div>

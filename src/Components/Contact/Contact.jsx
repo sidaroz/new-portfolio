@@ -11,17 +11,38 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 function Contact({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    gsap.from("#contact", {
-      duration: 1,
-      y: "100",
-      opacity: 0,
-      ease: "ease-in",
-      scrollTrigger: {
-        trigger: "#contact",
-        start: "top 90%",
-        end: "bottom 20%",
-        toggleActions: "restart complete complete reset",
-      },
+    // gsap.from("#contact", {
+    //   duration: 1,
+    //   y: "100",
+    //   opacity: 0,
+    //   ease: "ease-in",
+    //   scrollTrigger: {
+    //     trigger: "#contact",
+    //     start: "top 90%",
+    //     end: "bottom 20%",
+    //     toggleActions: "restart complete complete reset",
+    //   },
+    // });
+
+    gsap.set("#contact", { y: 100, opacity: 0 });
+    ScrollTrigger.batch("#contact", {
+      start: "top 70%",
+      end: "bottom 20%",
+      onEnter: () =>
+        gsap.to("#contact", {
+          opacity: 1,
+          autoAlpha: 1,
+          y: 0,
+          ease: "ease-in",
+          overwrite: true,
+        }),
+      onLeaveBack: () =>
+        gsap.to("#contact", {
+          opacity: 0,
+          autoAlpha: 1,
+          y: 100,
+          overwrite: true,
+        }),
     });
   }, []);
   const form = useRef();

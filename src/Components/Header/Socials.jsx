@@ -8,10 +8,11 @@ function Socials() {
       <a
         href="https://www.linkedin.com/in/sidar-ozbek-73a838216/"
         target="_blank"
+        rel="noreferrer"
       >
         <BsLinkedin />
       </a>
-      <a href="https://github.com/sidaroz" target="_blank">
+      <a href="https://github.com/sidaroz" target="_blank" rel="noreferrer">
         <FaGithub />
       </a>
     </div>

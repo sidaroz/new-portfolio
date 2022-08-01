@@ -9,44 +9,56 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function About({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
-  // ScrollTrigger.batch("#about", {
-  //   start: "top 80%",
-  //   onEnter: () => {
-  //     gsap.from("p", {
-  //       duration: 1,
-  //       opacity: 0,
-  //       ease: "ease-in",
-  //       y: "0",
-  //       stagger: 0.2,
-  //     });
-  //   },
-  // });
 
   useEffect(() => {
-    gsap.from("#about", {
-      duration: 1,
-      y: "100",
-      opacity: 0,
-      ease: "ease-in",
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 85%",
-        end: "bottom 20%",
-        toggleActions: "restart complete complete reset",
-      },
+    // gsap.from("#about", {
+    //   duration: 1,
+    //   y: "100",
+    //   opacity: 0,
+    //   ease: "ease-in",
+    //   scrollTrigger: {
+    //     trigger: "#about",
+    //     start: "top 85%",
+    //     end: "bottom 20%",
+    //     toggleActions: "restart complete complete reset",
+    //   },
+    // });
+
+    gsap.set("#about", { y: 100, opacity: 0 });
+    ScrollTrigger.batch("#about", {
+      start: "top 70%",
+      end: "bottom 20%",
+      onEnter: () =>
+        gsap.to("#about", {
+          opacity: 1,
+          autoAlpha: 1,
+          y: 0,
+          ease: "ease-in",
+          overwrite: true,
+        }),
+      onLeaveBack: () =>
+        gsap.to("#about", {
+          opacity: 0,
+          autoAlpha: 1,
+          y: 100,
+          overwrite: true,
+        }),
     });
-    gsap.from("p", {
-      duration: 1,
-      y: "100",
-      opacity: 0,
-      ease: "ease-in",
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 30%",
-        end: "bottom 20%",
-        toggleActions: "restart complete complete reset",
-      },
-    });
+
+    if (window.innerWidth < 2000) {
+      gsap.from("p", {
+        duration: 1,
+        y: "100",
+        opacity: 0,
+        ease: "ease-in",
+        scrollTrigger: {
+          trigger: "#about",
+          start: "top 30%",
+          end: "bottom 20%",
+          toggleActions: "restart complete complete reset",
+        },
+      });
+    }
   }, []);
   return (
     <section id="about" ref={innerRef}>

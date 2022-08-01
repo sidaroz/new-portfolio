@@ -32,6 +32,7 @@
 
 .experience__details {
   display: flex;
+  padding-left: 1rem;
   gap: 1rem;
 }
 
@@ -55,6 +56,9 @@
   .experience__content {
     padding: 1rem;
   }
+  .experience__details {
+    margin-left: 3rem;
+  }
 }
 
 /* --------------- Media Queries (small devices) ---------------- */
@@ -66,5 +70,8 @@
   .experience__container > div {
     width: 100%;
     padding: 2rem 1rem;
+  }
+  .experience__details {
+    margin-left: 0;
   }
 }

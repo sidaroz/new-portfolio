@@ -35,26 +35,76 @@ function Portfolio({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    gsap.from(".portfolio__container", {
-      y: "100",
-      opacity: 1,
-      scrollTrigger: {
-        trigger: "#portfolio",
-        start: "top 85%",
-        end: "bottom 20%",
-        toggleActions: "restart complete complete reset",
+    // gsap.from(".portfolio__container", {
+    //   y: "100",
+    //   opacity: 0,
+    //   scrollTrigger: {
+    //     trigger: "#portfolio",
+    //     start: "top 60%",
+    //     end: "bottom 20%",
+    //     toggleActions: "restart complete complete reset",
+    //   },
+    // });
+    gsap.set(".portfolio__item", { y: 100, opacity: 0 });
+
+    ScrollTrigger.batch(".portfolio__item", {
+      start: "top 60%",
+      end: "bottom 20%",
+      onEnter: (batch) =>
+        gsap.to(batch, {
+          opacity: 1,
+          autoAlpha: 1,
+          y: 0,
+          stagger: {
+            from: "start",
+            each: 0.3,
+            grid: "auto",
+            axis: "y",
+            ease: "power2.in",
+          },
+          overwrite: true,
+        }),
+      onLeaveBack: (batch) => {
+        gsap.to(batch, {
+          opacity: 0,
+          autoAlpha: 1,
+          y: 100,
+          stagger: { each: 0.2, grid: "auto" },
+          overwrite: true,
+        });
       },
     });
 
-    gsap.from(".portfolio__info", {
-      y: "100",
-      opacity: 1,
-      scrollTrigger: {
-        trigger: "#portfolio",
-        start: "top 85%",
-        end: "bottom 20%",
-        toggleActions: "restart complete complete reset",
-      },
+    // gsap.from(".portfolio__info", {
+    //   y: "100",
+    //   opacity: 0,
+    //   scrollTrigger: {
+    //     trigger: "#portfolio",
+    //     start: "top 60%",
+    //     end: "bottom 20%",
+    //     toggleActions: "restart complete complete reset",
+    //   },
+    // });
+
+    gsap.set(".portfolio__info", { y: 100, opacity: 0 });
+    ScrollTrigger.batch("#portfolio", {
+      start: "top 60%",
+      end: "bottom 20%",
+      onEnter: () =>
+        gsap.to(".portfolio__info", {
+          opacity: 1,
+          autoAlpha: 1,
+          y: 0,
+          ease: "ease-in",
+          overwrite: true,
+        }),
+      onLeaveBack: () =>
+        gsap.to(".portfolio__info", {
+          opacity: 0,
+          autoAlpha: 1,
+          y: 100,
+          overwrite: true,
+        }),
     });
   }, []);
 
@@ -145,6 +195,7 @@ function Portfolio({ innerRef }) {
         { techTitle: "CSS", icon: <SiCss3 /> },
         { techTitle: "Python", icon: <SiPython /> },
         { techTitle: "Django", icon: <SiDjango /> },
+        { techTitle: "JWT", icon: <SiJsonwebtokens /> },
         { techTitle: "SQLite", icon: <SiSqlite /> },
         { techTitle: "Firebase", icon: <SiFirebase /> },
         { techTitle: "Netlify", icon: <SiNetlify /> },

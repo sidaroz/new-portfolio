@@ -8,6 +8,7 @@ function Footer() {
         href="https://github.com/sidaroz/"
         className="footer__logo"
         target="_blank"
+        rel="noreferrer"
       >
         sidaroz
       </a>
