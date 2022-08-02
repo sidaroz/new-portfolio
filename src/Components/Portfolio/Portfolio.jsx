@@ -35,16 +35,6 @@ function Portfolio({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    // gsap.from(".portfolio__container", {
-    //   y: "100",
-    //   opacity: 0,
-    //   scrollTrigger: {
-    //     trigger: "#portfolio",
-    //     start: "top 60%",
-    //     end: "bottom 20%",
-    //     toggleActions: "restart complete complete reset",
-    //   },
-    // });
     gsap.set(".portfolio__item", { y: 100, opacity: 0 });
 
     ScrollTrigger.batch(".portfolio__item", {
@@ -75,17 +65,6 @@ function Portfolio({ innerRef }) {
       },
     });
 
-    // gsap.from(".portfolio__info", {
-    //   y: "100",
-    //   opacity: 0,
-    //   scrollTrigger: {
-    //     trigger: "#portfolio",
-    //     start: "top 60%",
-    //     end: "bottom 20%",
-    //     toggleActions: "restart complete complete reset",
-    //   },
-    // });
-
     gsap.set(".portfolio__info", { y: 100, opacity: 0 });
     ScrollTrigger.batch("#portfolio", {
       start: "top 60%",
@@ -109,7 +88,7 @@ function Portfolio({ innerRef }) {
   }, []);
 
   const onCurrentWebsite = () => {
-    toast.dark("🐢 Well thats awkward...", {
+    toast.dark("🤔 You may already be there...", {
       className: "toast__styling",
       progressClassName: "toast__progress-bar",
       position: "bottom-right",

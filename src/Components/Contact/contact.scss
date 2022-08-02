@@ -1,5 +1,6 @@
 :root {
   --transitionDelay: 0.4s;
+  --typewriterSpeed: 5s;
 }
 .container.contact__container {
   position: relative;
@@ -36,6 +37,39 @@
   }
   .is--typing.contact__title {
     transform: translateY(-100%);
+  }
+}
+
+span.animated--typing {
+  display: inline-block;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--color-bg);
+    animation: typewriter var(--typewriterSpeed) steps(3) 1s infinite;
+    border-left: 3px solid var(--color-primary);
+  }
+}
+
+@keyframes typewriter {
+  40%,
+  60% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
   }
 }
 

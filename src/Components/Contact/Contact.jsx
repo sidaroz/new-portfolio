@@ -11,12 +11,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 function Contact({ innerRef }) {
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    gsap.set("#contact", { y: 100, opacity: 0 });
+    gsap.set(".contact__info", { y: 100, opacity: 0 });
     ScrollTrigger.batch("#contact", {
       start: "top 70%",
       end: "bottom 20%",
       onEnter: () =>
-        gsap.to("#contact", {
+        gsap.to(".contact__info", {
           opacity: 1,
           autoAlpha: 1,
           y: 0,
@@ -24,7 +24,7 @@ function Contact({ innerRef }) {
           overwrite: true,
         }),
       onLeaveBack: () =>
-        gsap.to("#contact", {
+        gsap.to(".contact__info", {
           opacity: 0,
           autoAlpha: 1,
           y: 100,
@@ -102,54 +102,63 @@ function Contact({ innerRef }) {
 
   return (
     <section id="contact" ref={innerRef}>
-      <h5>Get In Touch</h5>
-      <div className="contact__title--container">
-        <h2 className="contact__h2 contact__title">.contact()</h2>
-        <h2 className="contact__h2 contact__title-down">.contacting...</h2>
-      </div>
-
-      <div className="container contact__container">
-        <div className="contact__options">
-          <article className="contact__option">
-            <MdOutlineEmail className="contact__option-icon" />
-            <h4>Email</h4>
-            <h5>sidarozbek96@gmail.com</h5>
-            <a
-              href="mailto:sidarozbek96@gmail.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Send a message
-            </a>
-          </article>
+      <section className="contact__info">
+        <h5>Get In Touch</h5>
+        <div className="contact__title--container">
+          <h2 className="contact__h2 contact__title">.contact()</h2>
+          <h2 className="contact__h2 contact__title-down">
+            .contacting<span className="animated--typing">...</span>
+          </h2>
         </div>
-        <form
-          ref={form}
-          onSubmit={sendEmail}
-          className="email__form"
-          onFocus={focusFormFunc}
-          onBlur={blurFormFunc}
-          onKeyDown={keyDownFunc}
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Full Name"
-            required
-          />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea
-            name="message"
-            rows="7"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit" className="btn btn-primary send__email-btn">
-            Send Message
-          </button>
-        </form>
-        <div className="email__lottie hidden" ref={container}></div>
-      </div>
+
+        <div className="container contact__container">
+          <div className="contact__options">
+            <article className="contact__option">
+              <MdOutlineEmail className="contact__option-icon" />
+              <h4>Email</h4>
+              <h5>sidarozbek96@gmail.com</h5>
+              <a
+                href="mailto:sidarozbek96@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Send a message
+              </a>
+            </article>
+          </div>
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className="email__form"
+            onFocus={focusFormFunc}
+            onBlur={blurFormFunc}
+            onKeyDown={keyDownFunc}
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Full Name"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              name="message"
+              rows="7"
+              placeholder="Your Message"
+              required
+            ></textarea>
+            <button type="submit" className="btn btn-primary send__email-btn">
+              Send Message
+            </button>
+          </form>
+          <div className="email__lottie hidden" ref={container}></div>
+        </div>
+      </section>
     </section>
   );
 }

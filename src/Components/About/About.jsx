@@ -24,12 +24,12 @@ function About({ innerRef }) {
     //   },
     // });
 
-    gsap.set("#about", { y: 100, opacity: 0 });
+    gsap.set(".about__info", { y: 100, opacity: 0 });
     ScrollTrigger.batch("#about", {
       start: "top 70%",
       end: "bottom 20%",
       onEnter: () =>
-        gsap.to("#about", {
+        gsap.to(".about__info", {
           opacity: 1,
           autoAlpha: 1,
           y: 0,
@@ -37,7 +37,7 @@ function About({ innerRef }) {
           overwrite: true,
         }),
       onLeaveBack: () =>
-        gsap.to("#about", {
+        gsap.to(".about__info", {
           opacity: 0,
           autoAlpha: 1,
           y: 100,
@@ -62,44 +62,46 @@ function About({ innerRef }) {
   }, []);
   return (
     <section id="about" ref={innerRef}>
-      <h5>Get To Know Me</h5>
-      <h2>.about()</h2>
+      <section className="about__info">
+        <h5>Get To Know Me</h5>
+        <h2>.about()</h2>
 
-      <div className="container about__container">
-        <div className="about__me">
-          <div className="me__about">
-            <img src={ME2} alt="me" />
+        <div className="container about__container">
+          <div className="about__me">
+            <div className="me__about">
+              <img src={ME2} alt="me" />
+            </div>
+          </div>
+          <div className="about__content">
+            <div className="about__cards">
+              <article className="about__card">
+                <FaAward className="about__icon" />
+                <h5>Experience</h5>
+                <small>5+ Months</small>
+              </article>
+              <article className="about__card">
+                <TbArrowFork className="about__icon" />
+                <h5>Contributions</h5>
+                <small>200+ (so far)</small>
+              </article>
+              <article className="about__card">
+                <VscFolderLibrary className="about__icon" />
+                <h5>Projects</h5>
+                <small>5 Completed</small>
+              </article>
+            </div>
+
+            <p>
+              A Mechanical Engineer MSc graduate who decided to dive straight
+              into coding and grew a passion for creating tech.
+            </p>
+
+            <a href="#contact" className="btn btn-primary">
+              Let's Talk
+            </a>
           </div>
         </div>
-        <div className="about__content">
-          <div className="about__cards">
-            <article className="about__card">
-              <FaAward className="about__icon" />
-              <h5>Experience</h5>
-              <small>5+ Months</small>
-            </article>
-            <article className="about__card">
-              <TbArrowFork className="about__icon" />
-              <h5>Contributions</h5>
-              <small>200+ (so far)</small>
-            </article>
-            <article className="about__card">
-              <VscFolderLibrary className="about__icon" />
-              <h5>Projects</h5>
-              <small>5 Completed</small>
-            </article>
-          </div>
-
-          <p>
-            A Mechanical Engineer MSc graduate who decided to dive straight into
-            coding and grew a passion for creating tech.
-          </p>
-
-          <a href="#contact" className="btn btn-primary">
-            Let's Talk
-          </a>
-        </div>
-      </div>
+      </section>
     </section>
   );
 }
