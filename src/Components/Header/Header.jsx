@@ -14,7 +14,7 @@ function Header({ innerRef }) {
   useEffect(() => {
     setTimeout(() => {
       return setLetterClass("text-animate-hover");
-    }, 4000);
+    }, 5500);
   }, []);
 
   return (

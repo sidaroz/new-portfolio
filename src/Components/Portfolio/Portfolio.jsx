@@ -89,8 +89,6 @@ function Portfolio({ innerRef }) {
 
   const onCurrentWebsite = () => {
     toast.dark("🤔 You may already be there...", {
-      className: "toast__styling",
-      progressClassName: "toast__progress-bar",
       position: "bottom-right",
       autoClose: 2000,
       hideProgressBar: false,
@@ -239,11 +237,7 @@ function Portfolio({ innerRef }) {
                   className="btn btn-primary"
                   target="_blank"
                   rel="noreferrer"
-                  onClick={
-                    window.innerWidth > 1200 && typeof demo === "string"
-                      ? null
-                      : onCurrentWebsite
-                  }
+                  onClick={typeof demo === "string" ? null : onCurrentWebsite}
                 >
                   Live Website
                 </a>

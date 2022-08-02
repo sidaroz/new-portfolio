@@ -127,7 +127,7 @@ section#about {
 @media screen and (max-width: 600px) {
   .about__me {
     width: 65%;
-    margin: 0 auto 3rem;
+    margin: 3rem auto 3rem;
   }
 
   .about__cards {
@@ -137,7 +137,7 @@ section#about {
 
   .about__content {
     text-align: center;
-    margin-top: 10rem;
+    margin-top: 7rem;
   }
 
   .about__content p {
@@ -147,5 +147,6 @@ section#about {
   .me__about {
     display: block;
     position: absolute;
+    /* margin-top: 10rem; */
   }
 }
