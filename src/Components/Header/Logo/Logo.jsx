@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./logo.scss";
 import LogoS from "../../../assets/logo-s-done.png";
 import { gsap } from "gsap";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin.js";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 
 function Logo() {
   const bgRef = useRef();
