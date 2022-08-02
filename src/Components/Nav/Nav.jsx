@@ -31,7 +31,7 @@ function Nav({ activeSection }) {
       { y: 0, opacity: 1, ease: Power3.easeIn }
     );
     setCompletedAnimation(true);
-  }, [completedAnimation]);
+  }, []);
 
   return (
     <nav>
