@@ -20,18 +20,18 @@ function Nav({ activeSection }) {
     paused: true,
   });
 
-  // useEffect(() => {
-  //   t2.play();
-  //   t2.fromTo(
-  //     "nav",
-  //     {
-  //       y: 40,
-  //       opacity: 0,
-  //     },
-  //     { y: 0, opacity: 1, ease: Power3.easeIn }
-  //   );
-  //   setCompletedAnimation(true);
-  // }, [completedAnimation]);
+  useEffect(() => {
+    t2.play();
+    t2.fromTo(
+      "nav",
+      {
+        y: 40,
+        opacity: 0,
+      },
+      { y: 0, opacity: 1, ease: Power3.easeIn }
+    );
+    setCompletedAnimation(true);
+  }, [completedAnimation]);
 
   return (
     <nav>
