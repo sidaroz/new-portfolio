@@ -11,19 +11,20 @@ import { useInView } from "react-intersection-observer";
 
 function App() {
   const [activeSection, setActiveSection] = useState("#");
-  const [ref, inView] = useInView({
-    threshold: 0.7,
-  });
-  const [ref2, inView2] = useInView({
+
+  let [ref, inView] = useInView({
     threshold: 0.5,
   });
-  const [ref3, inView3] = useInView({
+  let [ref2, inView2] = useInView({
     threshold: 0.5,
   });
-  const [ref4, inView4] = useInView({
-    threshold: 0.3,
+  let [ref3, inView3] = useInView({
+    threshold: 0.56,
   });
-  const [ref5, inView5] = useInView({
+  let [ref4, inView4] = useInView({
+    threshold: 0.35,
+  });
+  let [ref5, inView5] = useInView({
     threshold: 0.5,
   });
 
