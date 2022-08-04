@@ -24,6 +24,11 @@ Created a portfolio to show previous projects I have completed, and showcase som
 - CSS
 - Sass
 - GreenSock
+- DrawSVGPlugin
+- ScrollTrigger
+- Toastify
+- Lottie
+- EmailJS
 
 ## Wins
 
