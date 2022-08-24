@@ -59,6 +59,7 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  justify-content: center;
 }
 .project__technologies {
   font-size: 9px;
@@ -97,6 +98,10 @@ div.project__technologies > .technologies__header {
   background-color: var(--color-primary);
 }
 
+.project__name {
+  min-height: 4rem;
+  max-height: 4rem;
+}
 /* --------------- Media Queries (medium devices) ---------------- */
 @media screen and (max-width: 1024px) {
   .portfolio__container {

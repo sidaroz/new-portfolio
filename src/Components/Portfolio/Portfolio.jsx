@@ -222,7 +222,7 @@ function Portfolio({ innerRef }) {
                 </div>
                 <img src={image} alt={title} />
               </div>
-              <h3>{title}</h3>
+              <h3 className="project__name">{title}</h3>
               <div className="portfolio__item-cta">
                 <a
                   href={github}
